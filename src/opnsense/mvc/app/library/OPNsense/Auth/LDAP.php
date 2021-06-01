@@ -558,10 +558,6 @@ class LDAP extends Base implements IAuthConnector
         if (empty($password)) {
             // prevent anonymous bind
             return false;
-        } elseif (array_key_exists($username, $this->userDNmap)) {
-            // we can map $username to distinguished name, just feed to connect
-            $user_dn = $this->userDNmap[$username];
-            $ldap_is_connected = $this->connect($this->ldapBindURL, $this->userDNmap[$username], $password);
         } else {
             // we don't know this users distinguished name, try to find it
             if ($this->connect($this->ldapBindURL, $this->ldapBindDN, $this->ldapBindPassword)) {
