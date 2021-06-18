@@ -56,6 +56,8 @@ elif [ "${2}" = "inet6" ]; then
 		fi
 	fi
 
+	ifconfig "${1}" inet6 -ifdisabled
+
 	daemon -f /usr/local/opnsense/service/configd_ctl.py interface newipv6 ${1}
 fi
 
